@@ -15,7 +15,7 @@ apptainer build careamics.sif careamics.def
 - nota bene to use careamics within nextflow, the newest version of careamics docker and container image are available at [seqera containers](https://seqera.io/containers/)
 
 ## How to use
-- careamics was used as a python script from a container on HPC and we used the model n2v2 to denoise the data
+- careamics was used as a python script from a container on Tier1 and Tier2 cluster at the [Flemish supercomputer center](https://www.vscentrum.be/) and we used the model n2v2 to denoise the data
 ```bash
 # running the training
 sbatch training_careamics.slurm
