@@ -1,24 +1,19 @@
-FROM pytorch/pytorch:2.1.0-cuda11.8-cudnn8-runtime
+# Use Miniconda3 as the base image
+FROM continuumio/miniconda3
 
-ENV LC_ALL=C \
-    LANG=C \
-    PYTHONUNBUFFERED=1 \
-    DEBIAN_FRONTEND=noninteractive \
-    TZ=UTC
+# Set environment variables
+ENV CONDA_BIN_PATH="/opt/conda/bin"
+ENV PATH="$CONDA_BIN_PATH:$PATH"
 
-# Set timezone non-interactively and install dependencies
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && \
-    apt-get update && apt-get install -y python3-opencv && \
-    rm -rf /var/lib/apt/lists/*
+# Install necessary packages and create conda environment
+RUN apt-get update -y && \
+    apt-get install -y build-essential && \
+    conda create --name careamics_gpu python==3.10 pytorch torchvision pytorch-cuda=11.8 -c pytorch -c nvidia && \
+    /opt/conda/envs/careamics_gpu/bin/pip install --upgrade pip && \
+    /opt/conda/envs/careamics_gpu/bin/pip install careamics
 
-# Upgrade pip
-RUN pip install --upgrade pip
+# Activate the conda environment
+SHELL ["conda", "run", "-n", "careamics_gpu", "/bin/bash", "-c"]
 
-# Install Python dependencies
-RUN pip install "careamics[examples]"
-
-LABEL Author="Tatiana Woller" \
-      Version="1.0" \
-      Description="Careamics with PyTorch 2.1.0 and CUDA 11.8 support"
-
-CMD ["/bin/bash"]
+# Set the entrypoint to use the conda environment
+ENTRYPOINT ["/bin/bash", "-c", "source /opt/conda/etc/profile.d/conda.sh && conda activate careamics_gpu && exec \"$@\""]
