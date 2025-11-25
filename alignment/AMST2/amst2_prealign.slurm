@@ -1,7 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=amst2_prealign
 #SBATCH -A 
-#SBATCH --clusters=
 #SBATCH --partition=
 #SBATCH --nodes="1"
 #SBATCH --ntasks-per-node="1"
