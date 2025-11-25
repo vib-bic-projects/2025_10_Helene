@@ -4,7 +4,7 @@
 
 - [AMST2](https://github.com/jhennies/AMST2) is an python alignment tool developped by Julian Hennies and wrapped up as a snakemake pipeline.
 - AMST2 was installed within a conda environment according to [those guidelines](https://github.com/jhennies/AMST2?tab=readme-ov-file#installation)
-- AMST2 was used within a slurm job using the following scripts and yaml files (ajouter le path) with the following cli:
+- AMST2 was used within a slurm job using the following scripts and yaml files (ajouter le path) with the following cli on Tier1 and Tier2 cluster of the [Flemish supercomputer](https://www.vscentrum.be/):
   ```bash
   #launch the prealignment
   sbatch amst2_prealign.slurm
