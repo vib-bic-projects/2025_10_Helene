@@ -9,12 +9,16 @@
   
 ### Denoising tools
 - [CAREamics](https://github.com/CAREamics/careamics)
+
+### Registration and 2D visualisation
+- [bigwarp](https://github.com/saalfeldlab/bigwarp)
+- [MOBIE]([Welcome to the tutorials for MoBIE! | MoBIE](https://mobie.github.io/))
   
 ### Segmentation tools
 - [napari-nnInteractive](https://github.com/MIC-DKFZ/napari-nninteractive)
 - [Napari-EMPANADA](https://empanada.readthedocs.io/en/latest/)
 
-### Visualisation
+### 3D Visualisation
 
 - [MicroscopyNodes](https://github.com/aafkegros/MicroscopyNodes)
 
